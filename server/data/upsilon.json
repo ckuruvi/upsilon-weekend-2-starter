@@ -1,4 +1,5 @@
-[
+{
+  "people":[
   {
     "name": "Ahkillah Davis",
     "githubUserName": "adavi12",
@@ -12,7 +13,12 @@
   {
     "name": "Bob Hinkley",
     "githubUserName": "Bob-Hinkley",
-    "shoutout":"Thanks Bob, for being so happy" 
+    "shoutout":"Thanks Bob, for being so happy"
+  },
+   {
+    "name" : "Brian Schorn",
+    "githubUserName" : "relCORE",
+    "shoutout" : "Brian, thanks for asking questions that I'm also thinking about!"
   },
    {
      "name" : "Charles Kuruvila",
@@ -80,3 +86,4 @@
      "shoutout": "Thanks for Slacking me the speech topic!"
    }
 ]
+}
