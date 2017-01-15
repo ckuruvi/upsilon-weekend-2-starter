@@ -113,7 +113,7 @@ function displayUserDetails(person) {
     // reset color of previous div to grey.
     $('.display-boxes').children('#' + userName).css("background-color", "grey");
 
-    var $personDetails = $('<div id=' + person.githubUserName + '><div><span>' + person.name + '</span></div>');
+    var $personDetails = $('<div class="userDetails" id=' + person.githubUserName + '><div><span>' + person.name + '</span></div>');
     $personDetails.append('<div><span>https://github.com/' + person.githubUserName + '</span></div>');
     $personDetails.append('<div><span>' + person.shoutout + '</span></div></div>');
 
