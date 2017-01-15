@@ -1,9 +1,8 @@
 $(function() {
-    console.log('inside document ready function');
     var userName; //username
     var peopleArr; // data from jason stored as array
     var person; // user object
-    var isTimeReset = false;
+    var isTimeReset = false;  // resets timer after ever user click
 
     // function call to display the click buttons
     displayDivBoxes();
@@ -15,16 +14,17 @@ $(function() {
 
     // this event  lets the user select any  of the 17 buttons on display.
     $('.display-boxes').on('click', 'div.person', function() {
+
+        isTimeReset=true;  //timer reset
         userName = $(this).attr('id');
         person = getPersonObject(peopleArr, userName);
-        //  console.log(person);
         //displayUserDetails(person);
-        resetTimer(true, person);
+        resetTimer(isTimeReset, person);
     });
 
     // this event is triggered when user clicks on  "next".
     $('.display-boxes').on('click', 'div#next', function() {
-        console.log("next buton click.....");
+        isTimeReset=true;  //timer reset
         userName = $('.ajax-data').children('div').attr('id');
         var index = peopleArr.findIndex(function(person) {
             return person.githubUserName == userName;
@@ -32,17 +32,17 @@ $(function() {
 
         if (index == (peopleArr.length - 1) || index == -1) {
             //displayUserDetails(peopleArr[0]);
-            resetTimer(true, peopleArr[0]);
+            resetTimer(isTimeReset, peopleArr[0]);
         } else {
             //displayUserDetails(peopleArr[index + 1]);
-            resetTimer(true, peopleArr[index + 1]);
+            resetTimer(isTimeReset, peopleArr[index + 1]);
         }
     });
 
 
     // this event is triggered when user click on "prev".
     $('.display-boxes').on('click', 'div#prev', function() {
-        console.log("previous buton click.....");
+        isTimeReset=true;  //timer reset
         userName = $('.ajax-data').children('div').attr('id');
         var index = peopleArr.findIndex(function(person) {
             return person.githubUserName == userName;
@@ -50,10 +50,10 @@ $(function() {
 
         if (index == -1 || index == 0) {
             //displayUserDetails(peopleArr[peopleArr.length-1]);
-            resetTimer(true, peopleArr[peopleArr.length - 1]);
+            resetTimer(isTimeReset, peopleArr[peopleArr.length - 1]);
         } else {
             // displayUserDetails(peopleArr[index - 1]);
-            resetTimer(true, peopleArr[index - 1]);
+            resetTimer(isTimeReset, peopleArr[index - 1]);
         }
     });
 
@@ -65,7 +65,6 @@ $(function() {
             url: "/data",
             success: function(data) {
                 peopleArr = data.people;
-                //console.log(peopleArr);
                 data.people.forEach(function(person) {
                     appendDom(person);
                 });
@@ -75,6 +74,7 @@ $(function() {
 
     // this function is called every 10 seconds automatically from  the setInterval method
     function timeIntervalFunc() {
+        isTimeReset=false;  //timer reset
         userName = $('.ajax-data').children('div').attr('id');
         var index = peopleArr.findIndex(function(person) {
             return person.githubUserName == userName;
@@ -82,15 +82,16 @@ $(function() {
 
         if (index == (peopleArr.length - 1) || index == -1) {
             // displayUserDetails(peopleArr[0]);
-            resetTimer(false, peopleArr[0]);
+            resetTimer(isTimeReset, peopleArr[0]);
         } else {
             // displayUserDetails(peopleArr[index+1]);
-            resetTimer(false, peopleArr[index + 1]);
+            resetTimer(isTimeReset, peopleArr[index + 1]);
         }
+
     }
 
-   // this function is call to reset time on  the setInterval function
-   // this also calls function displayUserDetails to display user details
+    // this function is call to reset time on  the setInterval function
+    // this also calls function displayUserDetails to display user details
     function resetTimer(isTimeReset, person) {
         if (isTimeReset) {
             clearInterval(timeIntervalVar);
@@ -99,14 +100,12 @@ $(function() {
         }
         displayUserDetails(person);
     }
-}); //end of document ready function
+
+}); //jquery document ready function end 
 
 
 // user display details
 function displayUserDetails(person) {
-     // change the color of clicked div.
-    $('.display-boxes').children('#' + person.githubUserName).css("background-color", "tomato");
-
     // existing username on display stored to a variable
     var userName = $('.ajax-data').children('div').attr('id');
 
@@ -118,14 +117,19 @@ function displayUserDetails(person) {
     $personDetails.append('<div><span>' + person.shoutout + '</span></div></div>');
 
     if (userName != undefined) {
-            $('.ajax-data').children('div ' + '#' + userName).fadeOut('slow', function() {
+        $('.ajax-data').children('div ' + '#' + userName).fadeOut('fast', function() {
             $('.ajax-data').children('div ' + '#' + userName).remove();
-            $('.ajax-data').append($personDetails).hide().fadeIn('slow');
+            $('.ajax-data').append($personDetails).hide().fadeIn('fast');
+            // change the color of clicked div.
+            $('.display-boxes').children('#' + person.githubUserName).css("background-color", "tomato");
         });
     } else {
-          $('.ajax-data').append($personDetails).hide().fadeIn('slow');
+        $('.ajax-data').append($personDetails).hide().fadeIn('fast');
+        // change the color of clicked div.
+        $('.display-boxes').children('#' + person.githubUserName).css("background-color", "tomato");
     }
-}
+
+}  // displayUserDetails function end
 
 
 // iterator to get object from array based on input of userName.
@@ -134,7 +138,7 @@ function getPersonObject(peopleArr, userName) {
         return person.githubUserName === userName;
     });
     return person;
-}
+} //getPersonObject function end
 
 
 
@@ -142,4 +146,4 @@ function getPersonObject(peopleArr, userName) {
 function appendDom(person) {
     var $divs = '<div class="person" id="' + person.githubUserName + '"></div>';
     $('.display-boxes').append($divs);
-}
+}  // appendDom function end
