@@ -1,7 +1,7 @@
 # upsilon weekend 2 starter assignment#
 
-*Author: Charles Kuruvila*
-*Date : 01/14/2017*
+* *Author: Charles Kuruvila*
+* *Date : 01/14/2017*
 
 1. Single Ajax call made to the Node server to retrieve array of persons data in JSON format.
 2. Each person  is assigned a unique div button  which is displayed on the webpage.
