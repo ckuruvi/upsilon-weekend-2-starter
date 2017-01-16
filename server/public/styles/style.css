@@ -1,54 +1,74 @@
-
-body{
-  margin:auto;
-  width:800px;
-  border:1px solid;
-  box-shadow: 4px 2px 6px grey;
+body {
+    margin: auto;
+    width: 800px;
+    border: 1px solid;
+    box-shadow: 4px 2px 6px grey;
 }
 
-
-.person{
-  width:20px;
-  height:20px;
-  display:inline-block;
-  background-color:grey;
-  margin-right:1px;
-  border:1px solid;
-}
- .userDataDisplay h1{
-   text-align: center;
-   margin:auto;
-   width: 300px;
-}
-.display-boxes{
-  margin:auto;
-  margin-top:100px;
-  width:400px;
-  /*border:1px solid;*/
-  text-align: center;
+.person {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: grey;
+    margin-right: 1px;
+    border: 1px solid;
 }
 
-.display-boxes button{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display:inline-block;
-  border-radius: 7px;
-  width:60px;
-  background-color: initial;
+.userDataDisplay h1 {
+    text-align: center;
+    margin: auto;
+    width: 300px;
 }
 
-
-.buttons{
-  width:200px;
-  margin:auto;
-}
-.ajax-data{
-
-  border: 1px solid;
+.display-boxes {
+    margin: auto;
+    margin-top: 100px;
+    width: 400px;
+    /*border:1px solid;*/
+    text-align: center;
 }
 
+.display-boxes button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    border-radius: 7px;
+    width: 60px;
+    background-color: initial;
+}
 
-.userDetails div{
-  text-align: center;
-  margin-bottom: 10px;
+.buttons {
+    width: 200px;
+    margin: auto;
+}
+
+.ajax-data {
+    border: 1px solid;
+}
+
+@@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-2px, 0px, 0px);
+    }
+    20%, 80% {
+        transform: translate3d(3px, 0px, 0px);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0px, 0px);
+    }
+    40%, 60% {
+        transform: translate3d(4px, 0px, 0px);
+    }
+}
+
+.ajax-data:hover {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.userDetails div {
+    text-align: center;
+    margin-bottom: 10px;
 }
