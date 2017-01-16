@@ -42,31 +42,33 @@ body {
     margin: auto;
 }
 
-.ajax-data {
-    border: 1px solid;
-}
 
-@@keyframes shake {
-    10%, 90% {
+@keyframes shake {
+    10% {
+        transform: translate3d(0px, 0px, 0px);
+    }
+    30% {
+        transform: translate3d(2px, 0px, 0px);
+    }
+    70% {
         transform: translate3d(-2px, 0px, 0px);
     }
-    20%, 80% {
-        transform: translate3d(3px, 0px, 0px);
-    }
-    30%, 50%, 70% {
-        transform: translate3d(-4px, 0px, 0px);
-    }
-    40%, 60% {
-        transform: translate3d(4px, 0px, 0px);
+    100% {
+        transform: translate3d(0px, 0px, 0px);
     }
 }
 
-.ajax-data:hover {
-    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000px;
+.userDetails{
+  border: 1px solid;
+  animation-name: shake;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: 2;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
 }
+
 
 .userDetails div {
     text-align: center;
