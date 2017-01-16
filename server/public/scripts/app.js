@@ -22,8 +22,8 @@ $(function() {
         resetTimer(isTimeReset, person);
     });
 
-    // this event is triggered when user clicks on  "next".
-    $('.display-boxes').on('click', 'div#next', function() {
+    // this event is triggered when user clicks on  "next" button.
+    $('.buttons').on('click', '#next', function() {
         isTimeReset=true;  //timer reset
         userName = $('.ajax-data').children('div').attr('id');
         var index = peopleArr.findIndex(function(person) {
@@ -40,8 +40,8 @@ $(function() {
     });
 
 
-    // this event is triggered when user click on "prev".
-    $('.display-boxes').on('click', 'div#prev', function() {
+    // this event is triggered when user click on "prev" button.
+    $('.buttons').on('click', '#prev', function() {
         isTimeReset=true;  //timer reset
         userName = $('.ajax-data').children('div').attr('id');
         var index = peopleArr.findIndex(function(person) {
@@ -65,8 +65,14 @@ $(function() {
             url: "/data",
             success: function(data) {
                 peopleArr = data.people;
+                var pageLoad=true; //boolean value to display details of the first user on initial load
                 data.people.forEach(function(person) {
-                    appendDom(person);
+                  if(pageLoad){
+                    appendDom(person,pageLoad);
+                    pageLoad=false;
+                  }else{
+                    appendDom(person,pageLoad);
+                  }
                 });
             }
         });
@@ -97,11 +103,12 @@ $(function() {
             clearInterval(timeIntervalVar);
             timeIntervalVar = setInterval(timeIntervalFunc, 10000);
             isTimeReset = false;
+            displayUserDetails(person);
         }
         displayUserDetails(person);
     }
 
-}); //jquery document ready function end 
+}); //jquery document ready function end
 
 
 // user display details
@@ -126,6 +133,7 @@ function displayUserDetails(person) {
     } else {
         $('.ajax-data').append($personDetails).hide().fadeIn('fast');
         // change the color of clicked div.
+        console.log($('.display-boxes').children('#' + person.githubUserName));
         $('.display-boxes').children('#' + person.githubUserName).css("background-color", "tomato");
     }
 
@@ -143,7 +151,10 @@ function getPersonObject(peopleArr, userName) {
 
 
 // append div buttons to the page
-function appendDom(person) {
+function appendDom(person,pageLoad) {
+    if(pageLoad){
+      displayUserDetails(person);
+    }
     var $divs = '<div class="person" id="' + person.githubUserName + '"></div>';
     $('.display-boxes').append($divs);
 }  // appendDom function end

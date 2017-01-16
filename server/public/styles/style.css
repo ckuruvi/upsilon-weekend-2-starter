@@ -1,3 +1,12 @@
+
+body{
+  margin:auto;
+  width:800px;
+  border:1px solid;
+  box-shadow: 4px 2px 6px grey;
+}
+
+
 .person{
   width:20px;
   height:20px;
@@ -6,19 +15,40 @@
   margin-right:1px;
   border:1px solid;
 }
-
+ .userDataDisplay h1{
+   text-align: center;
+   margin:auto;
+   width: 300px;
+}
 .display-boxes{
+  margin:auto;
   margin-top:100px;
+  width:400px;
+  /*border:1px solid;*/
+  text-align: center;
 }
 
-.display-boxes #next{
-  margin-bottom:10px;
+.display-boxes button{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display:inline-block;
+  border-radius: 7px;
+  width:60px;
+  background-color: initial;
 }
 
-.display-boxes #prev{
-  margin-bottom:2px;
+
+.buttons{
+  width:200px;
+  margin:auto;
 }
+.ajax-data{
+
+  border: 1px solid;
+}
+
 
 .userDetails div{
+  text-align: center;
   margin-bottom: 10px;
 }
