@@ -1,8 +1,10 @@
 body {
     margin: auto;
+    height: 400px;
     width: 800px;
     border: 1px solid;
     box-shadow: 4px 2px 6px grey;
+    background-image:url("/images/carousel-horse.png");
 }
 
 .person {
@@ -15,6 +17,7 @@ body {
 }
 
 .userDataDisplay h1 {
+   color: #B27C7C;
     text-align: center;
     margin: auto;
     width: 300px;
@@ -24,8 +27,8 @@ body {
     margin: auto;
     margin-top: 100px;
     width: 400px;
-    /*border:1px solid;*/
     text-align: center;
+
 }
 
 .display-boxes button {
@@ -40,6 +43,10 @@ body {
 .buttons {
     width: 200px;
     margin: auto;
+}
+
+.ajax-data{
+  color:#779E73;
 }
 
 
@@ -60,8 +67,9 @@ body {
 
 .userDetails{
   border: 1px solid;
+  box-shadow: 4px 2px 6px grey;
   animation-name: shake;
-  animation-duration: 300ms;
+  animation-duration: 400ms;
   animation-timing-function: ease-in-out;
   animation-delay: 0s;
   animation-iteration-count: 2;

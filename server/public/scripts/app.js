@@ -156,7 +156,7 @@ function appendDom(person,pageLoad) {
     var $divs = '<div class="person" id="' + person.githubUserName + '"></div>';
     $('.display-boxes').append($divs);
 
-    //code inside if block run only once at the time of initialisation 
+    //code inside if block run only once at the time of initialisation
     if(pageLoad){
       displayUserDetails(person);
     }
